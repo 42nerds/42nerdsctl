@@ -18,6 +18,8 @@ import (
 	"fmt"
 	"os"
 
+	"bitbucket.com/42nerds/42nerdsctl/cmd/config"
+	"bitbucket.com/42nerds/42nerdsctl/cmd/projects"
 	homedir "github.com/mitchellh/go-homedir"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
@@ -27,8 +29,9 @@ var cfgFile string
 
 // RootCmd represents the base command when called without any subcommands
 var RootCmd = &cobra.Command{
-	Use:   "42nerdsctl",
-	Short: "A brief description of your application",
+	Version: "v0.0.1",
+	Use:     "42nerdsctl",
+	Short:   "A brief description of your application",
 	Long: `A longer description that spans multiple lines and likely contains
 examples and usage of using your application. For example:
 
@@ -60,6 +63,9 @@ func init() {
 	// Cobra also supports local flags, which will only run
 	// when this action is called directly.
 	RootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+
+	RootCmd.AddCommand(config.ConfigCmd)
+	RootCmd.AddCommand(projects.ProjectsCmd)
 }
 
 // initConfig reads in config file and ENV variables if set.

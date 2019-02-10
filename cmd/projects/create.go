@@ -1,4 +1,4 @@
-// Copyright © 2019 NAME HERE <EMAIL ADDRESS>
+// Copyright © 2019 Julian Kaffke <julian@42nerds.com>
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -36,7 +36,7 @@ to quickly create a Cobra application.`,
 }
 
 func init() {
-	projectsCmd.AddCommand(createCmd)
+	ProjectsCmd.AddCommand(createCmd)
 
 	// Here you will define your flags and configuration settings.
 

@@ -16,7 +16,6 @@ package main
 
 import (
 	"bitbucket.com/42nerds/42nerdsctl/cmd"
-	_ "bitbucket.com/42nerds/42nerdsctl/cmd/projects"
 )
 
 func main() {

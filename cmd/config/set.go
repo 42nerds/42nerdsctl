@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package cmd
+package config
 
 import (
 	"fmt"
@@ -46,7 +46,7 @@ to quickly create a Cobra application.`,
 }
 
 func init() {
-	configCmd.AddCommand(setCmd)
+	ConfigCmd.AddCommand(setCmd)
 
 	// Here you will define your flags and configuration settings.
 

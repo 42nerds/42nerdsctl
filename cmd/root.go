@@ -29,7 +29,7 @@ var cfgFile string
 
 // RootCmd represents the base command when called without any subcommands
 var RootCmd = &cobra.Command{
-	Version: "v0.0.1",
+	Version: "v0.1.0",
 	Use:     "42nerdsctl",
 	Short:   "A brief description of your application",
 	Long: `A longer description that spans multiple lines and likely contains

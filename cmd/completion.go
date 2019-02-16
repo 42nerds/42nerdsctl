@@ -27,7 +27,7 @@ var completionCmd = &cobra.Command{
 	Long: `
 Output shell completion code for bash. The shell code must be evaluated
 to provide interactive completion of 42nerdsctl commands.  This can be done by sourcing it from the
-.bash _profile.
+.bash_profile.
 
 Examples:
 	# Installing bash completion on macOS using homebrew

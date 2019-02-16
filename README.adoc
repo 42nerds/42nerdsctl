@@ -1,0 +1,41 @@
+42nerdsctl - A CLI for your work @ 42 N.E.R.D.S.
+================================================
+:Author: Julian Kaffke
+:Email: julian@42nerds.com
+:Revision: v0.2.1
+
+Installation
+------------
+
+By now the installation works with `go get` or from source.
+
+Via `go get`
+~~~~~~~~~~~~
+
+Run the following commend to install via `go get`
+
+[source,bash]
+  $ go get -u bitbucket.com/42nerds/42nerdsctl
+
+This will install the executable to your `$GOPATH/bin` directory. Make sure this is in your path
+
+From Source
+~~~~~~~~~~~
+To install from source use the following commands
+
+[source,bash]
+  $ git clone git@bitbucket.com:42nerds/42nerdsctl.git
+  $ cd 42nerdsctl
+  $ go install
+
+Usage
+-----
+
+Usage instructions are provided by the built in help
+
+[source,bash]
+  $ 42nerdsctl help
+
+Author
+------
+This CLI is written by {author} <{email}>

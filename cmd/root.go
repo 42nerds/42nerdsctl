@@ -1,4 +1,4 @@
-// Copyright © 2019 NAME HERE <EMAIL ADDRESS>
+// Copyright © 2019 Julian Kaffke <julian@42nerds.com>
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -29,7 +29,7 @@ var cfgFile string
 
 // RootCmd represents the base command when called without any subcommands
 var RootCmd = &cobra.Command{
-	Version: "v0.1.0",
+	Version: "v0.2.1",
 	Use:     "42nerdsctl",
 	Short:   "A brief description of your application",
 	Long: `A longer description that spans multiple lines and likely contains

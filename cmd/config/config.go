@@ -23,7 +23,7 @@ import (
 
 var cfgFile string
 
-// RootCmd represents the base command when called without any subcommands
+// ConfigCmd represents the base command when called without any subcommands
 var ConfigCmd = &cobra.Command{
 	Use:   "config",
 	Short: "A brief description of your application",

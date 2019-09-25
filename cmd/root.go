@@ -18,18 +18,24 @@ import (
 	"fmt"
 	"os"
 
-	"gitlab.com/42nerds/42nerdsctl/cmd/config"
-	"gitlab.com/42nerds/42nerdsctl/cmd/projects"
 	homedir "github.com/mitchellh/go-homedir"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
+	"gitlab.com/42nerds/42nerdsctl/cmd/config"
+	"gitlab.com/42nerds/42nerdsctl/cmd/projects"
 )
 
 var cfgFile string
 
+var (
+	version string
+	commit  string
+	date    string
+)
+
 // RootCmd represents the base command when called without any subcommands
 var RootCmd = &cobra.Command{
-	Version: "v0.2.1",
+	Version: version,
 	Use:     "42nerdsctl",
 	Short:   "A brief description of your application",
 	Long: `A longer description that spans multiple lines and likely contains
@@ -45,7 +51,10 @@ to quickly create a Cobra application.`,
 
 // Execute adds all child commands to the root command and sets flags appropriately.
 // This is called by main.main(). It only needs to happen once to the RootCmd.
-func Execute() {
+func Execute(v, c, d string) {
+	version = v
+	commit = c
+	date = d
 	if err := RootCmd.Execute(); err != nil {
 		fmt.Println(err)
 		os.Exit(1)

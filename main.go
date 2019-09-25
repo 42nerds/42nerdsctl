@@ -15,8 +15,6 @@
 package main
 
 import (
-	"fmt"
-
 	"gitlab.com/42nerds/42nerdsctl/cmd"
 )
 
@@ -27,6 +25,5 @@ var (
 )
 
 func main() {
-	fmt.Printf("%v, commit %v, built at %v", version, commit, date)
-	cmd.Execute()
+	cmd.Execute(version, commit, date)
 }

@@ -17,7 +17,7 @@ package main
 import (
 	"fmt"
 
-	"bitbucket.com/42nerds/42nerdsctl/cmd"
+	"gitlab.com/42nerds/42nerdsctl/cmd"
 )
 
 var (

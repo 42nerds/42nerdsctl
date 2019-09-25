@@ -1,4 +1,4 @@
-module bitbucket.com/42nerds/42nerdsctl
+module gitlab.com/42nerds/42nerdsctl
 
 require (
 	github.com/BurntSushi/toml v0.3.1 // indirect

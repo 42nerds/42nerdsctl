@@ -18,8 +18,8 @@ import (
 	"fmt"
 	"os"
 
-	"bitbucket.com/42nerds/42nerdsctl/cmd/config"
-	"bitbucket.com/42nerds/42nerdsctl/cmd/projects"
+	"gitlab.com/42nerds/42nerdsctl/cmd/config"
+	"gitlab.com/42nerds/42nerdsctl/cmd/projects"
 	homedir "github.com/mitchellh/go-homedir"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"

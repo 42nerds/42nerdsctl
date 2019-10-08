@@ -9,8 +9,10 @@ test:
 
 release:
   stage: deploy
-  image: goreleaser/goreleaser
+  image: 
+    name: goreleaser/goreleaser
+    entrypoint: ["/bin/sh", "-c"]
   script:
-  - release
+  - goreleaser
   only:
   - tags

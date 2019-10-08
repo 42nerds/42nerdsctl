@@ -16,12 +16,19 @@ limitations under the License.
 package cmd
 
 import (
+	"fmt"
+	"io/ioutil"
+	"net/http"
+	"os"
+
 	"github.com/spf13/cobra"
 )
 
-// devtoolsCmd represents the devtools command
-var devtoolsCmd = &cobra.Command{
-	Use:   "devtools",
+var fileName string
+
+// devtoolsGitignoreCmd represents the devtoolsGitignore command
+var devtoolsGitignoreCmd = &cobra.Command{
+	Use:   "gitignore TEMPLATE1,TEMPLATE2..TEMPLATEn",
 	Short: "A brief description of your command",
 	Long: `A longer description that spans multiple lines and likely contains examples
 and usage of using your command. For example:
@@ -29,21 +36,30 @@ and usage of using your command. For example:
 Cobra is a CLI library for Go that empowers applications.
 This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
-	// Run: func(cmd *cobra.Command, args []string) {
-	// 	fmt.Println("devtools called")
-	// },
+	Args: cobra.ExactArgs(1),
+	Run: func(cmd *cobra.Command, args []string) {
+		resp, err := http.Get("https://www.gitignore.io/api/" + args[0])
+		if err != nil {
+			fmt.Println(err)
+			os.Exit(1)
+		}
+		defer resp.Body.Close()
+		body, err := ioutil.ReadAll(resp.Body)
+
+		ioutil.WriteFile(fileName, body, 0755)
+	},
 }
 
 func init() {
-	rootCmd.AddCommand(devtoolsCmd)
+	devtoolsCmd.AddCommand(devtoolsGitignoreCmd)
 
 	// Here you will define your flags and configuration settings.
 
 	// Cobra supports Persistent Flags which will work for this command
 	// and all subcommands, e.g.:
-	// devtoolsCmd.PersistentFlags().String("foo", "", "A help for foo")
+	// devtoolsGitignoreCmd.PersistentFlags().String("foo", "", "A help for foo")
 
 	// Cobra supports local flags which will only run when this command
 	// is called directly, e.g.:
-	// devtoolsCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+	devtoolsGitignoreCmd.Flags().StringVarP(&fileName, "filename", "f", ".gitignore", "--filename .custom_gitignore")
 }

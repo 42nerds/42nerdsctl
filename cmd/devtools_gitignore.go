@@ -1,5 +1,5 @@
 /*
-Copyright © 2019 NAME HERE <EMAIL ADDRESS>
+Copyright © 2019 Julian Kaffke <julian@42nerds.com>
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -29,14 +29,11 @@ var fileName string
 // devtoolsGitignoreCmd represents the devtoolsGitignore command
 var devtoolsGitignoreCmd = &cobra.Command{
 	Use:   "gitignore TEMPLATE1,TEMPLATE2..TEMPLATEn",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
-	Args: cobra.ExactArgs(1),
+	Short: "generates a `.gitignore` file in current directory",
+	Long: `This command generates a '.gitignore' file from https://gitignore.io.
+You can pass the needed templates in a commaseperated list (without whitespace`,
+	Example: "42nerdsctl devtools gitignore macos,git,visualstudiocode,go",
+	Args:    cobra.ExactArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
 		resp, err := http.Get("https://www.gitignore.io/api/" + args[0])
 		if err != nil {
@@ -52,14 +49,5 @@ to quickly create a Cobra application.`,
 
 func init() {
 	devtoolsCmd.AddCommand(devtoolsGitignoreCmd)
-
-	// Here you will define your flags and configuration settings.
-
-	// Cobra supports Persistent Flags which will work for this command
-	// and all subcommands, e.g.:
-	// devtoolsGitignoreCmd.PersistentFlags().String("foo", "", "A help for foo")
-
-	// Cobra supports local flags which will only run when this command
-	// is called directly, e.g.:
 	devtoolsGitignoreCmd.Flags().StringVarP(&fileName, "filename", "f", ".gitignore", "--filename .custom_gitignore")
 }

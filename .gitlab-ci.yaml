@@ -1,0 +1,14 @@
+test:
+  stage: test
+  image: golang:1.13-alpine
+  script:
+  - go test ./...
+  - go vet ./...
+
+release:
+  stage: deploy
+  image: goreleaser/goreleaser
+  script:
+  - release
+  only:
+  - tags

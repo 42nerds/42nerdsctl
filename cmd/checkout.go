@@ -80,7 +80,7 @@ Also set your e-mail:
 }
 
 func init() {
-	RootCmd.AddCommand(checkoutCmd)
+	rootCmd.AddCommand(checkoutCmd)
 
 	// Here you will define your flags and configuration settings.
 

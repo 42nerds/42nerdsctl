@@ -45,10 +45,10 @@ directory
 	source <(42nerdsctl completion bash)
 `,
 	Run: func(cmd *cobra.Command, args []string) {
-		RootCmd.GenBashCompletion(os.Stdout)
+		rootCmd.GenBashCompletion(os.Stdout)
 	},
 }
 
 func init() {
-	RootCmd.AddCommand(completionCmd)
+	rootCmd.AddCommand(completionCmd)
 }

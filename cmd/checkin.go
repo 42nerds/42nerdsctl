@@ -80,5 +80,5 @@ Also set your e-mail:
 }
 
 func init() {
-	RootCmd.AddCommand(checkinCmd)
+	rootCmd.AddCommand(checkinCmd)
 }

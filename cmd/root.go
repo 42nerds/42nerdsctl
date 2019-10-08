@@ -16,27 +16,26 @@ package cmd
 
 import (
 	"fmt"
-	"log"
 	"os"
 
 	homedir "github.com/mitchellh/go-homedir"
 	"github.com/spf13/cobra"
-	"github.com/spf13/cobra/doc"
 	"github.com/spf13/viper"
-	"gitlab.com/42nerds/42nerdsctl/cmd/config"
-	"gitlab.com/42nerds/42nerdsctl/cmd/devtools"
-	"gitlab.com/42nerds/42nerdsctl/cmd/projects"
 )
 
 var cfgFile string
 var version string
 
-// RootCmd represents the base command when called without any subcommands
-var RootCmd = &cobra.Command{
+// rootCmd represents the base command when called without any subcommands
+var rootCmd = &cobra.Command{
 	Version: version,
 	Use:     "42nerdsctl",
 	Short:   "A brief description of your application",
-	Long: `A longer description that spans multiple lines and likely contains
+	Long: `	     __           __    __     __     __   
+	|__|  _)  |\ |   |_    |__)   |  \   (_    
+	   | /__  | \|.  |__.  | \ .  |__/.  __).  
+													  
+A longer description that spans multiple lines and likely contains
 examples and usage of using your application. For example:
 
 Cobra is a CLI library for Go that empowers applications.
@@ -45,9 +44,9 @@ to quickly create a Cobra application.`,
 }
 
 // Execute adds all child commands to the root command and sets flags appropriately.
-// This is called by main.main(). It only needs to happen once to the RootCmd.
+// This is called by main.main(). It only needs to happen once to the rootCmd.
 func Execute() {
-	if err := RootCmd.Execute(); err != nil {
+	if err := rootCmd.Execute(); err != nil {
 		fmt.Println(err)
 		os.Exit(1)
 	}
@@ -59,29 +58,19 @@ func init() {
 	// Here you will define your flags and configuration settings.
 	// Cobra supports persistent flags, which, if defined here,
 	// will be global for your application.
-	RootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.42nerdsctl.yaml)")
-
-	// Cobra also supports local flags, which will only run
-	// when this action is called directly.
-	RootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
-
-	RootCmd.AddCommand(config.ConfigCmd)
-	RootCmd.AddCommand(projects.ProjectsCmd)
-	RootCmd.AddCommand(devtools.DevToolsCmd)
+	rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.42nerdsctl.yaml)")
 }
 
 // initConfig reads in config file and ENV variables if set.
 func initConfig() {
-	err := doc.GenMarkdownTree(RootCmd, "docs")
-	if err != nil {
-		log.Fatal(err)
-	}
+	var home string
+	var err error
 	if cfgFile != "" {
 		// Use config file from the flag.
 		viper.SetConfigFile(cfgFile)
 	} else {
 		// Find home directory.
-		home, err := homedir.Dir()
+		home, err = homedir.Dir()
 		if err != nil {
 			fmt.Println(err)
 			os.Exit(1)
@@ -94,8 +83,19 @@ func initConfig() {
 
 	viper.AutomaticEnv() // read in environment variables that match
 
-	// If a config file is found, read it in.
-	if err := viper.ReadInConfig(); err == nil {
-
+	// If a config file is found, read it in, else create it.
+	if err := viper.ReadInConfig(); err != nil {
+		if _, ok := err.(viper.ConfigFileNotFoundError); ok {
+			f, err := os.OpenFile(home+"/.42nerdsctl.yaml", os.O_RDWR|os.O_CREATE, 0755)
+			if err != nil {
+				fmt.Printf("ERROR: %+v\n", err)
+			}
+			if err := f.Close(); err != nil {
+				fmt.Printf("ERROR: %+v\n", err)
+			}
+		} else {
+			// Config file was found but another error was produced
+			fmt.Printf("An error occurred reading the config file\nERROR:%+v", err)
+		}
 	}
 }

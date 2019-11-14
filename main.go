@@ -15,7 +15,7 @@
 package main
 
 import (
-	"gitlab.com/42nerds/42nerdsctl/cmd"
+	"github.com/42nerds/42nerdsctl/cmd"
 )
 
 func main() {

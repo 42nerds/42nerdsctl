@@ -1,4 +1,4 @@
-module gitlab.com/42nerds/42nerdsctl
+module github.com/42nerds/42nerdsctl
 
 require (
 	github.com/mitchellh/go-homedir v1.1.0

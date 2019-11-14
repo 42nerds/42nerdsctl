@@ -15,7 +15,7 @@ Via `go get`
 Run the following commend to install via `go get`
 
 [source,bash]
-  $ go get -u gitlab.com/42nerds/42nerdsctl
+  $ go get -u github.com/42nerds/42nerdsctl
 
 This will install the executable to your `$GOPATH/bin` directory. Make sure this is in your path
 
@@ -24,7 +24,7 @@ From Source
 To install from source use the following commands
 
 [source,bash]
-  $ git clone git@gitlab.com:42nerds/42nerdsctl.git
+  $ git clone git@github.com:42nerds/42nerdsctl.git
   $ cd 42nerdsctl
   $ go install
 

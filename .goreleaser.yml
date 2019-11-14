@@ -10,7 +10,7 @@ builds:
 - env:
   - CGO_ENABLED=0
   ldflags:
-  - -X gitlab.com/42nerds/42nerdsctl/cmd.version={{.Version}}
+  - -X github.com/42nerds/42nerdsctl/cmd.version={{.Version}}
 
 archives:
 - replacements:
@@ -23,15 +23,15 @@ checksum:
   name_template: 'checksums.txt'
 snapshot:
   name_template: "{{ .Tag }}-next"
-brews:
-  - name: cli
-    gitlab:
-      owner: 42nerds
-      name: homebrew-tap
-    commit_author: 
-      name: 42 N.E.R.D.S. Bot
-      email: support@42nerds.com
-    homepage: https://www.42nerds.com
+# brews:
+#   - name: cli
+#     gitlab:
+#       owner: 42nerds
+#       name: homebrew-tap
+#     commit_author: 
+#       name: 42 N.E.R.D.S. Bot
+#       email: support@42nerds.com
+#     homepage: https://www.42nerds.com
 changelog:
   sort: asc
   filters:

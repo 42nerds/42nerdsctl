@@ -4,8 +4,8 @@ on:
   push:
     branches:
     - master
-    tags:
-    - v*
+    tags-ignore:
+    - 'v*'
 
 jobs:
   goreleaser:
@@ -22,7 +22,7 @@ jobs:
       - name: Run GoReleaser
         uses: goreleaser/goreleaser-action@v1
         with:
-          version: latest
-          args: release
+          version: ${{ github.ref }}
+          args: release --snapshot
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

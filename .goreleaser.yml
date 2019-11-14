@@ -38,3 +38,8 @@ changelog:
     exclude:
     - '^docs:'
     - '^test:'
+release:
+  github:
+    owner: 42nerds
+    name: 42nerdsctl
+  disable: false

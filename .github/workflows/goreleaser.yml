@@ -1,8 +1,11 @@
 name: goreleaser
 
 on:
-  pull_request:
   push:
+    branches:
+    - master
+    tags:
+    - v*
 
 jobs:
   goreleaser:
@@ -10,7 +13,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v1
-        
+
       - name: Set up Go 1.13
         uses: actions/setup-go@v1
         with:
